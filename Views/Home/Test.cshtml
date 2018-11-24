@@ -16,9 +16,9 @@
             <p>@ViewData["message"]<i>@ViewData["artist"]</i></p>
             <p></p>
             <table class = "table">
-                @for (int i = 0; i< (int)videos.Count; i++)
+                @foreach (var video in videos)
                 {
-                    <tr><td><a href=@videos[i].Item2><img class="img-responsive" src=@videos[i].Item1>@videos[i].Item3</a></td></tr>
+                    <tr><td><a href=@video.Item2><img class="img-responsive" src=@video.Item1>@video.Item3</a></td></tr>
                 }
             </table>
         </div>
