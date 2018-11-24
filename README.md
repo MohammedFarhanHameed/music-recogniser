@@ -1,1 +1,1 @@
-# music-recogniser
+# Music Recogniser
