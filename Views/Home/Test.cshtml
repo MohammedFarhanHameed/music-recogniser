@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Music Recogniser";
+    
+    List<(string, string, string)> videos = new List<(string, string, string)>();
+    videos = (List<(string, string, string)>)ViewData["videos"]; 
+}
+
+@using (Html.BeginForm("Test","Home", FormMethod.Post))
+{
+    <div class="row">
+        <div>
+            <h2>Music Recogniser</h2>
+            <input type = "text" name="URL" id = "URL" placeholder="YouTube link...">
+            <button type="submit" class="btn">Search Music</button>
+            <p></p>
+            <p>@ViewData["message"]<i>@ViewData["artist"]</i></p>
+            <p></p>
+            <table class = "table">
+                @for (int i = 0; i< (int)videos.Count; i++)
+                {
+                    <tr><td><a href=@videos[i].Item2><img class="img-responsive" src=@videos[i].Item1>@videos[i].Item3</a></td></tr>
+                }
+            </table>
+        </div>
+    </div>
+}
