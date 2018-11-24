@@ -52,6 +52,7 @@ namespace Test.Controllers
                 try
                 {
                     // DOWNLOAD YOUTUBE VIDEO (BEST AVAILABLE QUALLITY)
+                    if(!URL.Contains("youtube.com/watch?v=")) goto ErrorHandler_DOWNLOAD;
                     string cmd = "youtube-dl " + URL + " -o \"" + filePath + fileName + "\" -q";
                     result = bash(cmd, OUTPUT.GET_ERROR);
                     // Debug.Print("CMD: " + cmd + "\n" + RESULT: " + result);
@@ -87,7 +88,7 @@ namespace Test.Controllers
                     Debug.Print("\nMIDDLE PRINT \n");
                     Debug.Print("RESULT: " + result);
                     
-                    if(result.Contains("\"status\":\"success\""))
+                    if(result.Contains("\"status\":\"success\"") && !result.Contains("\"result\":null"))
                     {
                         //
                         // {"status":"success","result":{"artist":"The Chainsmokers","title":"Closer (R3hab Remix)","album":...
